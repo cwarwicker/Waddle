@@ -13,6 +13,6 @@
         "php": ">=7.0.4"
     },
     "autoload": {
-        "psr-0": { "Waddle\\": "src/" }
+        "psr-4": { "Waddle\\": "src/" }
     }
 }
