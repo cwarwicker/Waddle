@@ -1,8 +1,18 @@
 {
     "name": "duckfusion/waddle",
-    "autoload": {
-        "psr-0": {
-            "Waddle\\": "src"
+    "type": "library",
+    "description": "PHP Library for parsing running GPS activities",
+    "keywords": ["running", "run", "gps"],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Conn Warwicker"
         }
+    ],
+    "require": {
+        "php": ">=7.0.4"
+    },
+    "autoload": {
+        "psr-0": { "Waddle": "src/" }
     }
 }
