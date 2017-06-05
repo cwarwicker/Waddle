@@ -1,0 +1,8 @@
+{
+    "name": "duckfusion/waddle",
+    "autoload": {
+        "psr-0": {
+            "Waddle\\": "src"
+        }
+    }
+}
