@@ -14,7 +14,7 @@ $parser = new \Waddle\Parser\TCXParser();
 $activity = $parser->parse('/path/to/activity.tcx');
 ```
 
-This will load the parse the .tcx file and load the activity into the $activity variable, which can then be used to calculate metrics.
+This will parse the .tcx file and load the activity into the $activity variable, which can then be used to calculate metrics.
 
 
 Calculating Metrics
