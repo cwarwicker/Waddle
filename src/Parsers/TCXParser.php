@@ -63,7 +63,7 @@ class TCXParser extends Parser
         {
             $lap->addTrackPoint( $this->parseTrackPoint($trackPointNode) );
         }
-                
+                        
         return $lap;
 
     }
@@ -78,7 +78,7 @@ class TCXParser extends Parser
         
         $point = new TrackPoint();
         $point->setTime( new \DateTime( (string)$trackPointNode->Time ) );
-        $point->setPosition( array('lat' => (float)$trackPointNode->Position->LatitudeDegrees, 'long' => (float)$trackPointNode->Position->LongitudeDegrees) );
+        $point->setPosition( array('lat' => (float)$trackPointNode->Position->LatitudeDegrees, 'lon' => (float)$trackPointNode->Position->LongitudeDegrees) );
         $point->setAltitude( (float)$trackPointNode->AltitudeMeters );
         $point->setDistance( (float)$trackPointNode->DistanceMeters );
                 

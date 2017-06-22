@@ -6,7 +6,7 @@ class TrackPoint
 {
     
     protected $time; // Timestamp of the time this point was recorded (generally every second)
-    protected $position = array(); // Array of lat/long
+    protected $position = array(); // Array of lat/lon
     protected $altitude; // Altitude in metres 
     protected $distance; // Distance travelled so far in metres
     

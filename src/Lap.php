@@ -56,7 +56,8 @@ class Lap
     }
     
     public function addTrackPoint(TrackPoint $point){
-        $this->trackPoints[] = $point;        
+        $this->trackPoints[] = $point;     
+        return $point;
     }
     
     
