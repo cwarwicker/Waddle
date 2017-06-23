@@ -2,7 +2,7 @@ Waddle
 ======
 
 Waddle is a PHP library for parsing running activities and calculating various metrics.
-It currently supports the parsing of .TCX files, but support for more file types will be added in the future.
+It supports the parsing of .TCX, .GPX, .PWX and .CSV files.
 
 Example Usage
 -----
