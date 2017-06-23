@@ -14,7 +14,7 @@ class Activity
      * @return type
      */
     public function getStartTime($format){
-        return $this->startTime->format($format);
+        return ($this->startTime instanceof \DateTime) ? $this->startTime->format($format) : $this->startTime;
     }
     
     /**

@@ -12,6 +12,8 @@ class TrackPoint
     
     // Extensions that may or may not be present depending on device
     protected $speed; // Metres per second
+    protected $heartRate; // Current hearthate
+    protected $calories; // Total calories burnt so far
     
     /**
      * Get the timestamp in a given format
@@ -19,7 +21,7 @@ class TrackPoint
      * @return type
      */
     public function getTime($format){
-        return $this->time->format($format);
+        return ($this->time instanceof \DateTime) ? $this->time->format($format) : $this->time;
     }
     
     /**
@@ -55,6 +57,24 @@ class TrackPoint
         return $this->speed;
     }
     
+    /**
+     * Get the current heart rate at this point
+     * @return type
+     */
+    public function getHeartRate(){
+        return $this->heartRate;
+    }
+    
+    
+
+    /**
+     * Get the number of calories burnt so far
+     * @return type
+     */
+    public function getCalories(){
+        return $this->calories;
+    }
+
     /**
      * Set the timestamp of this point
      * @param \DateTime $time
@@ -96,8 +116,34 @@ class TrackPoint
         return $this;
     }
     
+    /**
+     * Set the speed
+     * @param type $val
+     * @return $this
+     */
     public function setSpeed($val){
         $this->speed = $val;
+        return $this;
+    }
+    
+    /**
+     * Set the heart rate
+     * @param type $val
+     * @return $this
+     */
+    public function setHeartRate($val){
+        $this->heartRate = $val;
+        return $this;
+    }
+   
+    
+    /**
+     * Set the calories burnt so far
+     * @param type $val
+     * @return $this
+     */
+    public function setCalories($val){
+        $this->calories = $val;
         return $this;
     }
     

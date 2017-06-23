@@ -9,14 +9,23 @@ require_once __DIR__ . '/../src/Converter.php';
 require_once __DIR__ . '/../src/Parser.php';
 require_once __DIR__ . '/../src/Parsers/GPXParser.php';
 require_once __DIR__ . '/../src/Parsers/TCXParser.php';
+require_once __DIR__ . '/../src/Parsers/CSVParser.php';
+require_once __DIR__ . '/../src/Parsers/PWXParser.php';
 
+$type = (isset($_GET['type'])) ? $_GET['type'] : 'tcx';
 
-if (@$_GET['type'] == 'tcx'){
+if ($type == 'tcx'){
     $parser = new \Waddle\Parsers\TCXParser();
     $activity = $parser->parse('run.tcx');
-} else {
+} elseif ($type == 'gpx') {
     $parser = new \Waddle\Parsers\GPXParser();
     $activity = $parser->parse('run.gpx');
+} elseif ($type == 'csv'){
+    $parser = new \Waddle\Parsers\CSVParser();
+    $activity = $parser->parse('run.csv');
+} elseif ($type == 'pwx'){
+    $parser = new \Waddle\Parsers\PWXParser();
+    $activity = $parser->parse('run.pwx');
 }
 
 echo "starttime:";
@@ -57,7 +66,3 @@ echo "splits:";
 var_dump( $activity->getSplits('mi') );
 var_dump( $activity->getSplits('k') );
 
-
-
-echo "<hr>";
-var_dump($parser);

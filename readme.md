@@ -35,6 +35,27 @@ $totalCalories = $activity->getTotalCalories(); # e.g. 100
 $totalDistanceInMiles = \Waddle\Converter::convertMetresToMiles($totalDistance); # e.g. 0.62
 $totalDurationInHoursMinutesSeconds = \Waddle\Converter::convertSecondsToHumanReadable($totalDuration); # e.g. 00:04:15
 ```
+    
+See `/tests/index.php` for more examples.
+    
+Installation
+-----
+
+### via Composer
+
+```javascript
+{
+    "repositories": [
+       {
+           "type": "vcs",
+           "url": "https://github.com/cwarwicker/Waddle"
+       }
+    ],
+    "require": {
+        "duckfusion/waddle": "dev-master"
+    }
+}
+```        
 
 Running the Unit Tests
 -----
@@ -42,7 +63,7 @@ Running the Unit Tests
 ### Setup vendor 
 
     $ cd Waddle
-    $ composer install --dev
+    $ composer install
 
 ### Run the tests
 
