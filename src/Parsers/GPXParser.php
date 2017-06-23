@@ -10,7 +10,12 @@ use Waddle\TrackPoint;
 class GPXParser extends Parser
 {
     
-    
+    /**
+     * Parse the GPX file
+     * @param type $file
+     * @return Activity
+     * @throws \Exception
+     */
     public function parse($file)
     {
         

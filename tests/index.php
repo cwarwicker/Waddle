@@ -12,6 +12,9 @@ require_once __DIR__ . '/../src/Parsers/TCXParser.php';
 require_once __DIR__ . '/../src/Parsers/CSVParser.php';
 require_once __DIR__ . '/../src/Parsers/PWXParser.php';
 
+require_once __DIR__ . '/../src/Calculators/CalorieCalculator.php';
+
+
 $type = (isset($_GET['type'])) ? $_GET['type'] : 'tcx';
 
 if ($type == 'tcx'){
@@ -66,3 +69,22 @@ echo "splits:";
 var_dump( $activity->getSplits('mi') );
 var_dump( $activity->getSplits('k') );
 
+echo "<hr>";
+echo "Calculators:<br>";
+
+echo "MET Score, running 6mph:";
+var_dump(\Waddle\Calculators\CalorieCalculator::calculateMETFromMPH(6) );
+
+
+echo "MET Score, running 6kmph:";
+var_dump(\Waddle\Calculators\CalorieCalculator::calculateMETFromKMPH(6) );
+
+echo "00:24:12 in hour decimal:";
+var_dump(\Waddle\Converter::convertHoursMinutesSecondsToDecimal(0, 24, 12) );
+
+
+echo "Calories burned, running 6mph, weighing 75kg, running for 23 minutes, 47 seconds:";
+var_dump(\Waddle\Calculators\CalorieCalculator::calculateCaloriesBurned( \Waddle\Calculators\CalorieCalculator::calculateMETFromMPH(6) , 75, \Waddle\Converter::convertHoursMinutesSecondsToDecimal(0, 23, 47) ) );
+
+echo "Calories burned, running 15.6kmph, weighing 90kg, running for 1 hour, 21 minutes, 05 seconds:";
+var_dump(\Waddle\Calculators\CalorieCalculator::calculateCaloriesBurned( \Waddle\Calculators\CalorieCalculator::calculateMETFromKMPH(15.6) , 90, \Waddle\Converter::convertHoursMinutesSecondsToDecimal(1, 21, 5) ) );

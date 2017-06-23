@@ -5,34 +5,92 @@ namespace Waddle;
 abstract class Converter
 {
     
+    /**
+     * Convert metres per second, to miles per hour
+     * @param type $val
+     * @return type
+     */
     public static function convertMetresPerSecondToMilesPerHour($val){
         return ($val * 2.23694);
     }
     
+    /**
+     * Convert metres per second, to kilometres per hour
+     * @param type $val
+     * @return type
+     */
     public static function convertMetresPerSecondToKilometresPerHour($val){
         return ($val * 3.6);
     }
     
+    /**
+     * Convert metres to kilometres
+     * @param type $val
+     * @return type
+     */
     public static function convertMetresToKilometres($val){
         return ($val / 1000);
     }
     
+    /**
+     * Convert metres to miles
+     * @param type $val
+     * @return type
+     */
     public static function convertMetresToMiles($val){
         return ($val / 1609.34);
     }
     
+    /**
+     * Convert metres to feet
+     * @param type $val
+     * @return type
+     */
     public static function convertMetresToFeet($val){
         return ($val * 3.28084);
     }
     
+    /**
+     * Convert miles to metres
+     * @param type $val
+     * @return type
+     */
     public static function convertMilesToMetres($val){
         return ($val * 1609.34);
     }
     
+    /**
+     * Convert kilometres to metres
+     * @param type $val
+     * @return type
+     */
     public static function convertKilometresToMetres($val){
         return ($val * 1000);
     }
     
+    /**
+     * Convert hours, minutes, seconds, to an hour decimal
+     * e.g. 00 30 00 = 0.5 hours
+     * @param type $h
+     * @param type $m
+     * @param type $s
+     * @return type
+     */
+    public static function convertHoursMinutesSecondsToDecimal($h, $m, $s){
+        
+        $total = 0;
+        $total += $h;
+        $total += ( (1 / 60) * $m );
+        $total += ( ( 1 / 3600 ) * $s );
+        return $total;
+        
+    }
+    
+    /**
+     * Convert seconds to a human readable hh:mm:ss
+     * @param type $val
+     * @return type
+     */
     public static function convertSecondsToHumanReadable($val){
         return sprintf( "%02d:%02d:%02d", ($val / 3600), ($val / 60 % 60), ($val % 60) );        
     }

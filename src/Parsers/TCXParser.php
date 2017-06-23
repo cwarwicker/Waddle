@@ -10,6 +10,12 @@ use Waddle\TrackPoint;
 class TCXParser extends Parser
 {
     
+    /**
+     * Parse the TCX file
+     * @param type $file
+     * @return Activity
+     * @throws \Exception
+     */
     public function parse($file)
     {
         

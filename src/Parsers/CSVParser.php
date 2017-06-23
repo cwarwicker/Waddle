@@ -12,6 +12,12 @@ class CSVParser extends Parser
  
     private $headers = array();
     
+    /**
+     * Parse the CSV file
+     * @param type $file
+     * @return Activity
+     * @throws \Exception
+     */
     public function parse($file)
     {
         
@@ -79,7 +85,7 @@ class CSVParser extends Parser
     
     
     /**
-     * Parse the XML of a track point
+     * Parse the track point
      * @param type $trackPointNode
      * @return \Waddle\TrackPoint
      */

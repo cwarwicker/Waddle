@@ -10,6 +10,12 @@ use Waddle\TrackPoint;
 class PWXParser extends Parser
 {
     
+    /**
+     * Parse the PWX file
+     * @param type $file
+     * @return Activity
+     * @throws \Exception
+     */
     public function parse($file)
     {
         
@@ -17,8 +23,6 @@ class PWXParser extends Parser
         if (!is_file($file)){
             throw new \Exception("Could not load file: {$file}");
         }
-        
-        
         
         // Load the XML in the TCX file
         $data = simplexml_load_file($file);
@@ -32,7 +36,6 @@ class PWXParser extends Parser
         $activity = new Activity();
         $activity->setStartTime( new \DateTime( (string)$activityNode->time ) );
 
-        
         // We will treat all track points as being lap 1, even if they have a different lap number, for easier parsing
         $lap = new \Waddle\Lap();
                 
