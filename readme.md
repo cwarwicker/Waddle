@@ -1,7 +1,7 @@
 Waddle
 ======
 
-Waddle is a PHP library for parsing running/cycling activities and calculating various metrics.
+Waddle is a PHP library for parsing running activities and calculating various metrics.
 It currently supports the parsing of .TCX files, but support for more file types will be added in the future.
 
 Example Usage
