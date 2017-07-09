@@ -43,6 +43,7 @@ var_dump( \Waddle\Converter::convertMetresToKilometres($activity->getTotalDistan
 echo "dur:";
 var_dump( $activity->getTotalDuration() );
 var_dump( \Waddle\Converter::convertSecondsToHumanReadable($activity->getTotalDuration()) );
+var_dump( \Waddle\Converter::convertHumanReadableToSeconds( \Waddle\Converter::convertSecondsToHumanReadable($activity->getTotalDuration()) ) );
 
 echo "pace:";
 var_dump( $activity->getAveragePacePerMile() );

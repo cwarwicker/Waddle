@@ -37,5 +37,8 @@ class ConverterTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('05:04:54', \Waddle\Converter::convertSecondsToHumanReadable(18294));
     }
     
+    public function testSecondsHumanReadable(){
+        $this->assertEquals(18294, Converter::convertHumanReadableToSeconds('05:04:54'));
+    }
     
 }

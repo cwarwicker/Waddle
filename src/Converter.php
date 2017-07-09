@@ -95,6 +95,15 @@ abstract class Converter
         return sprintf( "%02d:%02d:%02d", ($val / 3600), ($val / 60 % 60), ($val % 60) );        
     }
     
+    /**
+     * Convert the hh:mm:ss human readable time, back into seconds
+     * @param type $val
+     * @return type
+     */
+    public static function convertHumanReadableToSeconds($val){
+        $explode = explode(":", $val);
+        return ($explode[0] * 3600) + ($explode[1] * 60) + $explode[2];
+    }
     
     
 }
