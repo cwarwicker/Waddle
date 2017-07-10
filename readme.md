@@ -71,16 +71,27 @@ All parsers just have the one ```parse()``` method you need to call, passing in 
 Available Activity Metrics/Data
 -----
 ```$activity->getStartTime($format)``` - This returns the start time of the activity. The ```$format``` variable should contain a [valid data format](http://php.net/manual/en/datetime.formats.php)
+
 ```$activity->getTotalDistance()``` - This returns the total distance of the activity, in metres.
+
 ```$activity->getTotalDuration()``` - This returns the total duration of the activity, in seconds.
+
 ```$activity->getAveragePacePerMile()``` - This returns the average pace per mile of the activity, in the format "hh:mm:ss".
+
 ```$activity->getAveragePacePerKilometre()``` - This returns the average pace per kilometre of the activity, in the format "hh:mm:ss".
+
 ```$activity->getAverageSpeedInMPH()``` - This returns the average speed of the activity, in miles per hour.
+
 ```$activity->getAverageSpeedInKPH()``` - This returns the average speed of the activity, in kilometres per hour.
+
 ```$activity->getTotalCalories()``` - This returns the total calories burned in the activity (if this was specified in the file).
+
 ```$activity->getMaxSpeedInMPH()``` - This returns the maximum speed of the activity, in miles per hour.
+
 ```$activity->getMaxSpeedInKPH()``` - This returns the maximum speed of the activity, in kilometres per hour.
+
 ```$activity->getTotalAscentDescent()``` - This returns an array with the total distance ascended and decended, in metres.
+
 ```$activity->getSplits($type)``` - This retrurns an array of the activity splits. The ```$type``` variable should contain either "m" for miles, or "k" for kilometres. The activity will then be split into 1 mile/kilometre points. **Future** - In the future this will split into mini Activity objects, so metrics can be calculated on individual splits as well.
 
 
@@ -95,14 +106,23 @@ By default some metrics are calculated in unhelpful measures, such as Total Dist
 
 You can use the Converter class to convert between formats:
 ```\Waddle\Converter::convertMetresPerSecondToMilesPerHour($val)``` - This converts a metres per second value, into miles per hour.
+
 ```\Waddle\Converter::convertMetresPerSecondToKilometresPerHour($val)``` - This converts a metres per second value, into kilometres per hour.
+
 ```\Waddle\Converter::convertMetresToKilometres($val)``` - This converts a metres value, into kilometres.
+
 ```\Waddle\Converter::convertMetresToMiles($val)``` - This converts a metres value, into miles.
+
 ```\Waddle\Converter::convertMetresToFeet($val)``` - This converts a metres value, into feet.
+
 ```\Waddle\Converter::convertMilesToMetres($val)``` - This converts a miles value, into metres.
+
 ```\Waddle\Converter::convertKilometresToMetres($val)``` - This converts a kilometres value, into metres.
+
 ```\Waddle\Converter::convertHoursMinutesSecondsToDecimal($h, $m, $s)``` - This converts the values of hours, minutes and seconds, into a decimal hour value. For example, 2 hours, 45 minutes and 0 seconds, would be converted to a decimal "2.75" hours.
+
 ```\Waddle\Converter::convertSecondsToHumanReadable($val)``` - This converts a seconds value, into the format "hh:mm:ss".
+
 ```\Waddle\Converter::convertHumanReadableToSeconds($val)``` - This converts a string with the format "hh:mm:ss", into seconds.
 
 
@@ -117,7 +137,9 @@ It should be noted that calorie calculations can vary quite wildly between diffe
 
 ### Available methods
 ```\Waddle\Calculators\CalorieCalculator::calculateMETFromMPH($avgSpeed)``` - This calculates the rough MET score of a Running activity, based on the average speed in miles per hour.
+
 ```\Waddle\Calculators\CalorieCalculator::calculateMETFromKPH($avgSpeed)``` - This calculates the rough MET score of a Running activity, based on the average speed in kilometres per hour.
+
 ```\Waddle\Calculators\CalorieCalculator::calculateCaloriesBurned(float $mets, float $weightInKG, float $timeInHours)``` - This calculates the rough Calories burned, based on the MET score of the activity, the weight of the person in kilograms, and the duration of the activity, in decimal time.
 
 ### Examples
