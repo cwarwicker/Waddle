@@ -1,5 +1,6 @@
 Waddle
 ======
+![alt tag](http://i.imgur.com/aN6aPFg.png)
 
 Waddle is a PHP library for parsing GPS activities (e.g. from a Sports Watch) and calculating various metrics.
 It supports the parsing of .TCX, .GPX, .PWX and .CSV files.
