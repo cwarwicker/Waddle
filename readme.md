@@ -24,6 +24,12 @@ Installation
 }
 ```        
 
+### via Zip file
+
+Download the Waddle zip file from this repository and place inside your project.
+You will then need to require or include the files you wish to use, unless you are making use of an autoloader.
+
+
 Example Usage
 -----
 
