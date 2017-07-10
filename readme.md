@@ -134,19 +134,19 @@ Extras - Calculators
 -----
 In addition to the calculations available on the Activity class, there are also extra Calculator classes you can use to calculate data not included in the GPS activity file, such as Calories burned.
 
-## CalorieCalculator
+### CalorieCalculator
 The CalorieCalculator class uses MET (Metabolic Equivilent) scores to calculate how many calories are burned, based on the intensity of the activity and the weight of the person.
 
 It should be noted that calorie calculations can vary quite wildly between different systems and should only ever be used as a rough estimate, as there are many things which can affect how quickly an individual burns calories.
 
-### Available methods
+#### Available methods
 ```\Waddle\Calculators\CalorieCalculator::calculateMETFromMPH($avgSpeed)``` - This calculates the rough MET score of a Running activity, based on the average speed in miles per hour.
 
 ```\Waddle\Calculators\CalorieCalculator::calculateMETFromKPH($avgSpeed)``` - This calculates the rough MET score of a Running activity, based on the average speed in kilometres per hour.
 
 ```\Waddle\Calculators\CalorieCalculator::calculateCaloriesBurned(float $mets, float $weightInKG, float $timeInHours)``` - This calculates the rough Calories burned, based on the MET score of the activity, the weight of the person in kilograms, and the duration of the activity, in decimal time.
 
-### Examples
+#### Examples
 ```php
 
 // Get the average speed in MPH
