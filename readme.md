@@ -40,11 +40,7 @@ $parser = new \Waddle\Parser\TCXParser();
 $activity = $parser->parse('/path/to/activity.tcx');
 ```
 
-This will parse the .tcx file and load the Activity into the $activity variable, which can then be used to calculate metrics.
-
-
-Calculating Metrics
------
+This will parse the .tcx file and load the Activity into the $activity variable, which can then be used to calculate metrics:
 
 ```php
 <?php
@@ -61,6 +57,7 @@ $totalCalories = $activity->getTotalCalories(); # e.g. 100
 $totalDistanceInMiles = \Waddle\Converter::convertMetresToMiles($totalDistance); # e.g. 0.62
 $totalDurationInHoursMinutesSeconds = \Waddle\Converter::convertSecondsToHumanReadable($totalDuration); # e.g. 00:04:15
 ```
+    
     
 Available Parsers    
 ------    
