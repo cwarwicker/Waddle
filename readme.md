@@ -35,7 +35,6 @@ Example Usage
 
 ```php
 <?php
-
 $parser = new \Waddle\Parser\TCXParser();
 $activity = $parser->parse('/path/to/activity.tcx');
 ```
@@ -44,7 +43,6 @@ This will parse the .tcx file and load the Activity into the $activity variable,
 
 ```php
 <?php
-
 $parser = new \Waddle\Parser\TCXParser();
 $activity = $parser->parse('/path/to/activity.tcx');
 
@@ -148,7 +146,6 @@ It should be noted that calorie calculations can vary quite wildly between diffe
 
 #### Examples
 ```php
-
 // Get the average speed in MPH
 $averageSpeedInMPH = $activity->getAverageSpeedInMPH();
 
@@ -165,7 +162,6 @@ $durationInDecimalHours = \Waddle\Converter::convertHoursMinutesSecondsToDecimal
 
 // Calculate the calories burned
 $caloriesBurned = \Waddle\Calculators\CalorieCalculator::calculateCaloriesBurned($metScore , $weightInKG, $durationInDecimalHours );
-
 ```
 
 Help
