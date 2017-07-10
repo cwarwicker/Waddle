@@ -108,6 +108,7 @@ Converting Metrics Between Formats
 By default some metrics are calculated in unhelpful measures, such as Total Distance being in metres, when you might want a more helpful measure, such as miles or kilometres.
 
 You can use the Converter class to convert between formats:
+
 ```\Waddle\Converter::convertMetresPerSecondToMilesPerHour($val)``` - This converts a metres per second value, into miles per hour.
 
 ```\Waddle\Converter::convertMetresPerSecondToKilometresPerHour($val)``` - This converts a metres per second value, into kilometres per hour.
