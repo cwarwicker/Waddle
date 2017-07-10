@@ -1,7 +1,3 @@
-<p align="center">
-  <img width="150" src="http://i.imgur.com/aN6aPFg.png">
-</p>
-
 Waddle
 ======
 
