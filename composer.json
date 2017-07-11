@@ -1,7 +1,7 @@
 {
     "name": "duckfusion/waddle",
     "type": "library",
-    "description": "PHP Library for parsing running GPS activities",
+    "description": "PHP Library for parsing running GPS activities and calculating metrics",
     "keywords": ["gps", "tcx", "gpx", "pwx", "running", "parse"],
     "minimum-stability": "dev",
     "authors": [
