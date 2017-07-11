@@ -12,12 +12,6 @@ Installation
 
 ```javascript
 {
-    "repositories": [
-       {
-           "type": "vcs",
-           "url": "https://github.com/cwarwicker/Waddle"
-       }
-    ],
     "require": {
         "duckfusion/waddle": "dev-master"
     }
