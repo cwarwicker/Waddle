@@ -18,7 +18,7 @@ class GPXParser extends Parser
      */
     public function parse($file)
     {
-        
+
         // Check that the file exists
         if (!is_file($file)){
             throw new \Exception("Could not load file: {$file}");
@@ -108,6 +108,8 @@ class GPXParser extends Parser
         $point->setAltitude( (float)$trackPointNode->ele );
                         
         // GPX files don't store the distance travelled, that will have to be calculated from lat/lon
+        $distance = 0;
+        $speed = 0;
         if (!is_null($previousTrackPoint)){
             
             // Distance
@@ -117,11 +119,9 @@ class GPXParser extends Parser
             // Speed = Distance / Time
             // Each track point should be recorded 1 second after the last, but let's just confirm that
             $timeDiff = $point->getTime('U') - $previousTrackPoint->getTime('U');
-            $speed = ( $distanceTravelled / $timeDiff ); # Metres per Second
-                        
-        } else {
-            $distance = 0;
-            $speed = 0;
+            if($timeDiff != 0) {
+                $speed = ( $distanceTravelled / $timeDiff ); # Metres per Second
+            }
         }
         
         $point->setDistance($distance);
