@@ -22,9 +22,7 @@ class CSVParser extends Parser
     {
         
         // Check that the file exists
-        if (!is_file($file)){
-            throw new \Exception("Could not load file: {$file}");
-        }
+        $this->checkForFile($file);
         
         // Load the CSV data
         $handle = fopen($file, 'r');

@@ -20,9 +20,7 @@ class GPXParser extends Parser
     {
 
         // Check that the file exists
-        if (!is_file($file)){
-            throw new \Exception("Could not load file: {$file}");
-        }
+        $this->checkForFile($file);
         
         // Create a new activity instance
         $activity = new Activity();
