@@ -244,6 +244,47 @@ class Activity
         return $result;
         
     }
+
+    /**
+     * Gives some information about the geographical properties of this track like extremal points
+     * @return type
+     */
+    public function getGeographicInformation(){
+
+        $result = array(
+            'north' => PHP_INT_MIN,
+            'east' => PHP_INT_MIN,
+            'south' => PHP_INT_MAX,
+            'west' => PHP_INT_MAX,
+            'highest' => PHP_INT_MIN,
+            'lowest' => PHP_INT_MAX,
+        );
+
+        // First lap
+        $last = $this->getLap(0)->getTrackPoint(0)->getAltitude();
+
+        // Loop through each lap and point and add it all up
+        foreach($this->laps as $lap)
+        {
+            foreach($lap->getTrackPoints() as $point)
+            {
+                $lat = $point->getPosition('lat');
+                $long = $point->getPosition('lon');
+                $altitude = $point->getAltitude();
+
+                $result['highest'] = max($altitude, $result['highest']);
+                $result['lowest'] = min($altitude, $result['lowest']);
+
+                $result['north'] = max($lat, $result['north']);
+                $result['south'] = min($lat, $result['south']);
+                $result['east'] = max($long, $result['east']);
+                $result['west'] = min($long, $result['west']);
+            }
+        }
+
+        return $result;
+
+    }
     
     /**
      * Get an array of splits, in miles

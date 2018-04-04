@@ -20,9 +20,7 @@ class PWXParser extends Parser
     {
         
         // Check that the file exists
-        if (!is_file($file)){
-            throw new \Exception("Could not load file: {$file}");
-        }
+        $this->checkForFile($file);
         
         // Load the XML in the TCX file
         $data = simplexml_load_file($file);
