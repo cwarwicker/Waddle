@@ -65,6 +65,8 @@ All parsers just have the one ```parse()``` method you need to call, passing in 
 
 Available Activity Metrics/Data
 -----
+```$activity->getType()``` - This returns the type of activity, e.g. "Running" or "Cycling"
+
 ```$activity->getStartTime($format)``` - This returns the start time of the activity. The ```$format``` variable should contain a [valid data format](http://php.net/manual/en/datetime.formats.php)
 
 ```$activity->getTotalDistance()``` - This returns the total distance of the activity, in metres.

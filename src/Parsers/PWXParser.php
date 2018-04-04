@@ -35,7 +35,8 @@ class PWXParser extends Parser
         // Create a new activity instance
         $activity = new Activity();
         $activity->setStartTime( new \DateTime( (string)$activityNode->time ) );
-
+        $activity->setType( (string)$activityNode->sportType[0] );
+       
         // We will treat all track points as being lap 1, even if they have a different lap number, for easier parsing
         $lap = new \Waddle\Lap();
                 

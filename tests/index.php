@@ -31,6 +31,9 @@ if ($type == 'tcx'){
     $activity = $parser->parse('run.pwx');
 }
 
+echo "type of activity (not available in CSV): ";
+var_dump($activity->getType());
+
 echo "starttime:";
 var_dump($activity->getStartTime('d-m-Y H:i:s'));
 

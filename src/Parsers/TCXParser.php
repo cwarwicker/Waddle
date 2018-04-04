@@ -36,6 +36,7 @@ class TCXParser extends Parser
         // Parse the first activity
         $activityNode = $data->Activities->Activity[0];
         $activity->setStartTime( new \DateTime( (string)$activityNode->Id ) );
+        $activity->setType( (string)$activityNode['Sport'] );
         
         // Now parse the laps
         // There should only be 1 lap, but they are stored in an array just in case this ever changes

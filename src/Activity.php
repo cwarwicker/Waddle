@@ -5,8 +5,28 @@ namespace Waddle;
 class Activity
 {
     
+    protected $type;
     protected $startTime;
     protected $laps = array();
+    
+    /**
+     * Get the type of activity, e.g. "Running" or "Cycling"
+     * @return type
+     */
+    public function getType(){
+        return $this->type;
+    }
+    
+    
+    /**
+     * Set the activity type
+     * @param type $type
+     * @return $this
+     */
+    public function setType($type){
+        $this->type = $type;
+        return $this;
+    }
     
     /**
      * Get the start time in a particular format

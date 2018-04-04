@@ -37,6 +37,7 @@ class GPXParser extends Parser
         // Parse the first activity
         $activityNode = $data->trk;
         $activity->setStartTime( new \DateTime( (string)$activityNode->trkseg[0]->trkpt[0]->time ) );
+        $activity->setType( (string)$activityNode->name[0] );
         
         // Now parse the trksegs (Track Segments, I assume)
         // There should only be 1 trkseg, but they are stored in an array just in case this ever changes
