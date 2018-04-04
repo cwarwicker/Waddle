@@ -74,5 +74,34 @@ class GPXParserTest extends \PHPUnit\Framework\TestCase
     public function testActivitySplitsInKilometres(){
         $this->assertEquals(5, count($this->activity->getSplits('k')));
     }
-    
+
+    public function testGeographicNorthernmost(){
+        $result = $this->activity->getGeographicInformation();
+        $this->assertEquals(52.149607, $result['north']);
+    }
+
+    public function testGeographicSouthernmost(){
+        $result = $this->activity->getGeographicInformation();
+        $this->assertEquals(52.145288, $result['south']);
+    }
+
+    public function testGeographicEasternmost(){
+        $result = $this->activity->getGeographicInformation();
+        $this->assertEquals(-0.459067, $result['east']);
+    }
+
+    public function testGeographicWesternmost(){
+        $result = $this->activity->getGeographicInformation();
+        $this->assertEquals(-0.469208, $result['west']);
+    }
+
+    public function testGeographicHighest(){
+        $result = $this->activity->getGeographicInformation();
+        $this->assertEquals(49.7, $result['highest']);
+    }
+
+    public function testGeographicLowest(){
+        $result = $this->activity->getGeographicInformation();
+        $this->assertEquals(37.0, $result['lowest']);
+    }
 }

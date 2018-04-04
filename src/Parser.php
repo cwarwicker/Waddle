@@ -6,6 +6,17 @@ abstract class Parser
 {
     
     abstract public function parse($file);
+
+    /**
+     * Check if file is available
+     * @param $file
+     * @throws \Exception
+     */
+    protected function checkForFile($file) {
+        if (!is_file($file)){
+            throw new \Exception("Could not load file: {$file}");
+        }
+    }
     
     /**
      * Calculate the distance in KM, between two lat/lon points
