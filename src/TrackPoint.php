@@ -5,16 +5,17 @@ namespace Waddle;
 class TrackPoint
 {
     
-    protected $time; // Timestamp of the time this point was recorded (generally every second)
+    protected $time = null;        // Timestamp of the time this point was recorded (generally every second)
     protected $position = array(); // Array of lat/lon
-    protected $altitude; // Altitude in metres 
-    protected $distance; // Distance travelled so far in metres
-    
+    protected $altitude = null;    // Altitude in metres
+    protected $distance = null;    // Distance travelled so far in metres
+
     // Extensions that may or may not be present depending on device
-    protected $speed; // Metres per second
-    protected $heartRate; // Current hearthate
-    protected $calories; // Total calories burnt so far
-    
+    protected $speed = null;      // Metres per second
+    protected $heartRate = null;  // Current hearthate
+    protected $cadence = null;    // Current cadence
+    protected $calories = null;   // Total calories burnt so far
+
     /**
      * Get the timestamp in a given format
      * @param type $format
@@ -65,7 +66,13 @@ class TrackPoint
         return $this->heartRate;
     }
     
-    
+    /**
+     * Get the current cadence rate at this point
+     * @return type
+     */
+    public function getCadence(){
+        return $this->cadence;
+    }
 
     /**
      * Get the number of calories burnt so far
@@ -136,7 +143,16 @@ class TrackPoint
         return $this;
     }
    
-    
+    /**
+     * Set the cadence rate
+     * @param type $val
+     * @return $this
+     */
+    public function setCadence($val){
+        $this->cadence = $val;
+        return $this;
+    }
+
     /**
      * Set the calories burnt so far
      * @param type $val

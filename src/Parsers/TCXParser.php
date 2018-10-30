@@ -62,7 +62,19 @@ class TCXParser extends Parser
         $lap->setTotalDistance( (float)$lapNode->DistanceMeters );
         $lap->setMaxSpeed( (float)$lapNode->MaximumSpeed );
         $lap->setTotalCalories( (float)$lapNode->Calories );
-                
+
+        if( isset($lapNode->AverageHeartRateBpm) ) {
+            $lap->setAvgHeartRate((int) $lapNode->AverageHeartRateBpm->Value);
+        }
+
+        if( isset($lapNode->MaximumHeartRateBpm) ) {
+            $lap->setMaxHeartRate((int) $lapNode->MaximumHeartRateBpm->Value);
+        }
+
+        if( isset($lapNode->Cadence) ) {
+            $lap->setCadence((int) $lapNode->Cadence);
+        }
+
         // Loop through the track points
         foreach( $lapNode->Track->Trackpoint as $trackPointNode )
         {
@@ -86,15 +98,26 @@ class TCXParser extends Parser
         $point->setPosition( array('lat' => (float)$trackPointNode->Position->LatitudeDegrees, 'lon' => (float)$trackPointNode->Position->LongitudeDegrees) );
         $point->setAltitude( (float)$trackPointNode->AltitudeMeters );
         $point->setDistance( (float)$trackPointNode->DistanceMeters );
-                
-        if (isset($trackPointNode->Extensions->children('x', true)->TPX->children()->Speed))
-        {
-            $point->setSpeed( (float)$trackPointNode->Extensions->children('x', true)->TPX->children()->Speed );
+
+        if( isset($trackPointNode->HeartRateBpm) ) {
+            if( isset($trackPointNode->HeartRateBpm->Value) ) {
+                $point->setHeartRate((int)$trackPointNode->HeartRateBpm->Value);
+            }
+        }
+
+        if( isset($trackPointNode->Cadence) ) {
+            $point->setCadence((int)$trackPointNode->Cadence);
+        }
+
+        if(isset($trackPointNode->Extensions)) {
+            if (isset($trackPointNode->Extensions->children('x', true)->TPX->children()->Speed))
+            {
+                $point->setSpeed( (float)$trackPointNode->Extensions->children('x', true)->TPX->children()->Speed );
+            }
         }
         
         return $point;
         
     }
-    
     
 }

@@ -5,12 +5,17 @@ namespace Waddle;
 class Lap
 {
     
-    protected $totalTime; // Seconds
-    protected $totalDistance; // Metres
-    protected $maxSpeed; // Metres per second
-    protected $totalCalories;
+    protected $totalTime = null;     // Seconds
+    protected $totalDistance = null; // Metres
+    protected $maxSpeed = null;      // Metres per second
+    protected $totalCalories = null;
+
+    protected $avgHeartRate = null;
+    protected $maxHeartRate = null;
+    protected $cadence = null;
+
     protected $trackPoints = array();
-    
+
     /**
      * Get the total lap time
      * @return type
@@ -61,6 +66,30 @@ class Lap
     }
     
     /**
+     * Get the average heart rate achieved during the lap
+     * @return type
+     */
+    public function getAvgHeartRate(){
+        return $this->avgHeartRate;
+    }
+
+    /**
+     * Get the maximum heart rate achieved during the lap
+     * @return type
+     */
+    public function getMaxHeartRate(){
+        return $this->maxHeartRate;
+    }
+
+    /**
+     * Get the cadence achieved during the lap
+     * @return type
+     */
+    public function getCadence(){
+        return $this->cadence;
+    }
+
+    /**
      * Set the total lap time (seconds)
      * @param type $val
      * @return $this
@@ -110,5 +139,34 @@ class Lap
         return $point;
     }
     
-    
+    /**
+     * Set the average heart rate in lap
+     * @param type $val
+     * @return $this
+     */
+    public function setAvgHeartRate($val){
+        $this->avgHeartRate = $val;
+        return $this;
+    }
+
+    /**
+     * Set the maximum heart rate in lap
+     * @param type $val
+     * @return $this
+     */
+    public function setMaxHeartRate($val){
+        $this->maxHeartRate = $val;
+        return $this;
+    }
+
+    /**
+     * Set the cadence in lap
+     * @param type $val
+     * @return $this
+     */
+    public function setCadence($val){
+        $this->cadence = $val;
+        return $this;
+    }
+
 }
