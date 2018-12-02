@@ -9,7 +9,13 @@ use Waddle\TrackPoint;
 
 class TCXParser extends Parser
 {
+    const NS_ACTIVITY_EXTENSION_V2 = 'http://www.garmin.com/xmlschemas/ActivityExtension/v2';
     
+    /**
+     * @var string
+     */
+    private $nameNSActivityExtensionV2;
+
     /**
      * Parse the TCX file
      * @param type $file
@@ -30,6 +36,7 @@ class TCXParser extends Parser
         if (!isset($data->Activities->Activity)){
             throw new \Exception("Unable to find valid activity in file contents");
         }
+        $this->detectsNamespace($data);
         
         // Parse the first activity
         $activityNode = $data->Activities->Activity[0];
@@ -47,6 +54,22 @@ class TCXParser extends Parser
         return $activity;
                 
         
+    }
+
+    /**
+     * 
+     * @var \SimpleXMLElement $xml
+     */
+    private function detectsNamespace(\SimpleXMLElement $xml)
+    {
+        $this->nameNSActivityExtensionV2 = null;
+
+        $namespaces = $xml->getNamespaces(true);
+        foreach($namespaces as $name => $ns) {
+            if ($ns === self::NS_ACTIVITY_EXTENSION_V2) {
+                $this->nameNSActivityExtensionV2 = $name;
+            }
+        }
     }
     
     /**
@@ -87,9 +110,10 @@ class TCXParser extends Parser
         $point->setAltitude( (float)$trackPointNode->AltitudeMeters );
         $point->setDistance( (float)$trackPointNode->DistanceMeters );
                 
-        if (isset($trackPointNode->Extensions->children('x', true)->TPX->children()->Speed))
-        {
-            $point->setSpeed( (float)$trackPointNode->Extensions->children('x', true)->TPX->children()->Speed );
+        if ($this->nameNSActivityExtensionV2) {
+            if (isset($trackPointNode->Extensions->children('x', true)->TPX->children()->Speed)) {
+                $point->setSpeed( (float)$trackPointNode->Extensions->children('x', true)->TPX->children()->Speed );
+            }
         }
         
         return $point;
