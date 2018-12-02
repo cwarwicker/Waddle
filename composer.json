@@ -13,7 +13,7 @@
         "php": ">=7.0.4"
     },
     "require-dev": {
-      "phpunit/phpunit": "dev-master"  
+      "phpunit/phpunit": "^7.4"  
     },
     "autoload": {
         "psr-4": { "Waddle\\": "src/" }
