@@ -12,21 +12,21 @@ class GPXParser extends Parser
     
     /**
      * Parse the GPX file
-     * @param type $file
+     * @param string $pathname
      * @return Activity
      * @throws \Exception
      */
-    public function parse($file)
+    public function parse($pathname)
     {
 
         // Check that the file exists
-        $this->checkForFile($file);
+        $this->checkForFile($pathname);
         
         // Create a new activity instance
         $activity = new Activity();
         
         // Load the XML in the TCX file
-        $data = simplexml_load_file($file);
+        $data = simplexml_load_file($pathname);
         if (!isset($data->trk)){
             throw new \Exception("Unable to find valid activity in file contents");
         }
@@ -41,6 +41,11 @@ class GPXParser extends Parser
         // There should only be 1 trkseg, but they are stored in an array just in case this ever changes
         foreach($activityNode->trkseg as $lapNode)
         {
+            if(!$lapNode->trkpt){
+                // In some cases there can be an empty lap node
+                continue;
+            }
+
             $activity->addLap( $this->parseLap($lapNode) );
         }
                 
@@ -52,7 +57,7 @@ class GPXParser extends Parser
     
     /**
      * Parse the lap XML (trkseg)
-     * @param type $lapNode
+     * @param \SimpleXMLElement $lapNode
      * @return \Waddle\Lap
      */
     protected function parseLap($lapNode)
