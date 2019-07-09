@@ -118,7 +118,7 @@ class TrackPoint
     
     /**
      * Set the speed
-     * @param type $val
+     * @param float $val
      * @return $this
      */
     public function setSpeed($val){

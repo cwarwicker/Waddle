@@ -9,12 +9,12 @@ abstract class Parser
 
     /**
      * Check if file is available
-     * @param $file
+     * @param string $pathname
      * @throws \Exception
      */
-    protected function checkForFile($file) {
-        if (!is_file($file)){
-            throw new \Exception("Could not load file: {$file}");
+    protected function checkForFile($pathname) {
+        if (!is_file($pathname)){
+            throw new \Exception("Could not load file: {$pathname}");
         }
     }
     

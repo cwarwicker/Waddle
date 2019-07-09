@@ -20,7 +20,7 @@ class Activity
     
     /**
      * Set the activity type
-     * @param type $type
+     * @param string $type
      * @return $this
      */
     public function setType($type){
@@ -30,8 +30,8 @@ class Activity
     
     /**
      * Get the start time in a particular format
-     * @param type $format
-     * @return type
+     * @param string $format
+     * @return string
      */
     public function getStartTime($format){
         return ($this->startTime instanceof \DateTime) ? $this->startTime->format($format) : $this->startTime;
