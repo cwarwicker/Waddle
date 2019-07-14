@@ -4,111 +4,124 @@ namespace Waddle;
 
 class Lap
 {
-    
-    protected $totalTime; // Seconds
-    protected $totalDistance; // Metres
-    protected $maxSpeed; // Metres per second
+    /** @var int Seconds */
+    protected $totalTime;
+    /** @var float Meters */
+    protected $totalDistance;
+    /** @var float Meters per seconds */
+    protected $maxSpeed;
+    /** @var float */
     protected $totalCalories;
-    protected $trackPoints = array();
-    
+    /** @var TrackPoint[] */
+    protected $trackPoints = [];
+
     /**
      * Get the total lap time
-     * @return type
+     * @return int
      */
-    public function getTotalTime(){
+    public function getTotalTime()
+    {
         return $this->totalTime;
     }
-    
+
     /**
      * Get the total lap distance
-     * @return type
+     * @return float
      */
-    public function getTotalDistance(){
+    public function getTotalDistance()
+    {
         return $this->totalDistance;
     }
-    
+
     /**
      * Get the max speed achieved during the lap
-     * @return type
+     * @return float
      */
-    public function getMaxSpeed(){
+    public function getMaxSpeed()
+    {
         return $this->maxSpeed;
     }
-    
+
     /**
      * Get the calories burnt during the lap
-     * @return type
+     * @return float
      */
-    public function getTotalCalories(){
+    public function getTotalCalories()
+    {
         return $this->totalCalories;
     }
-    
+
     /**
      * Get the array of track points
-     * @return type
+     * @return TrackPoint[]
      */
-    public function getTrackPoints(){
+    public function getTrackPoints()
+    {
         return $this->trackPoints;
     }
-    
+
     /**
      * Get a specific track point, by its number
-     * @param type $num
-     * @return type
+     * @param int $num
+     * @return TrackPoint|bool
      */
-    public function getTrackPoint($num){
+    public function getTrackPoint($num)
+    {
         return (array_key_exists($num, $this->trackPoints)) ? $this->trackPoints[$num] : false;
     }
-    
+
     /**
      * Set the total lap time (seconds)
-     * @param type $val
+     * @param int $val
      * @return $this
      */
-    public function setTotalTime($val){
+    public function setTotalTime($val)
+    {
         $this->totalTime = $val;
         return $this;
     }
-    
+
     /**
      * Set the total lap distance (metres)
-     * @param type $val
+     * @param float $val
      * @return $this
      */
-    public function setTotalDistance($val){
+    public function setTotalDistance($val)
+    {
         $this->totalDistance = $val;
         return $this;
     }
-    
+
     /**
      * Set the max lap speed (metres per second)
-     * @param type $val
+     * @param float $val
      * @return $this
      */
-    public function setMaxSpeed($val){
+    public function setMaxSpeed($val)
+    {
         $this->maxSpeed = $val;
         return $this;
     }
-    
+
     /**
      * Set the total calories burnt
-     * @param type $val
+     * @param int $val
      * @return $this
      */
-    public function setTotalCalories($val){
+    public function setTotalCalories($val)
+    {
         $this->totalCalories = $val;
         return $this;
     }
-    
+
     /**
      * Add a track point to the lap
-     * @param \Waddle\TrackPoint $point
-     * @return \Waddle\TrackPoint
+     * @param TrackPoint $point
+     * @return TrackPoint
      */
-    public function addTrackPoint(TrackPoint $point){
-        $this->trackPoints[] = $point;     
+    public function addTrackPoint(TrackPoint $point)
+    {
+        $this->trackPoints[] = $point;
         return $point;
     }
-    
-    
 }
