@@ -13,7 +13,7 @@ Installation
 ```javascript
 {
     "require": {
-        "duckfusion/waddle": "dev-master"
+        "duckfusion/waddle": "^1.0"
     }
 }
 ```        
