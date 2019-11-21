@@ -29,7 +29,7 @@ Example Usage
 
 ```php
 <?php
-$parser = new \Waddle\Parser\TCXParser();
+$parser = new \Waddle\Parsers\TCXParser();
 $activity = $parser->parse('/path/to/activity.tcx');
 ```
 
@@ -37,7 +37,7 @@ This will parse the .tcx file and load the Activity into the $activity variable,
 
 ```php
 <?php
-$parser = new \Waddle\Parser\TCXParser();
+$parser = new \Waddle\Parsers\TCXParser();
 $activity = $parser->parse('/path/to/activity.tcx');
 
 // Get some key metrics
@@ -54,10 +54,10 @@ $totalDurationInHoursMinutesSeconds = \Waddle\Converter::convertSecondsToHumanRe
 Available Parsers    
 ------    
 ```php
-$parser = new \Waddle\Parser\TCXParser();
-$parser = new \Waddle\Parser\GPXParser();
-$parser = new \Waddle\Parser\PWXParser();
-$parser = new \Waddle\Parser\CSVParser();
+$parser = new \Waddle\Parsers\TCXParser();
+$parser = new \Waddle\Parsers\GPXParser();
+$parser = new \Waddle\Parsers\PWXParser();
+$parser = new \Waddle\Parsers\CSVParser();
 ```
 
 All parsers just have the one ```parse()``` method you need to call, passing in the path to your relevant file, as seen in earlier examples. This ```parse()``` method returns an instance of the Activity class (or throws an exception upon failure). This Activity object can then be used to calculate all the different metrics based on the file contents.
