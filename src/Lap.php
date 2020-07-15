@@ -61,6 +61,19 @@ class Lap
     }
 
     /**
+     * Gets an array of track points formatted for Google Maps integration. Render with json_encode()
+     * @return array [['lat' => xxx, 'lng' => xxx], ...]
+     */
+    public function getTrackPointsAsPolylineData()
+    {
+        $output = [];
+        foreach ($this->trackPoints as $trackPoint) {
+            $output[] = ['lat' => $trackPoint->getPosition('lat'), 'lng' => $trackPoint->getPosition('lon')];
+        }
+        return $output;
+    }
+
+    /**
      * Get a specific track point, by its number
      * @param int $num
      * @return TrackPoint|bool
@@ -121,6 +134,10 @@ class Lap
      */
     public function addTrackPoint(TrackPoint $point)
     {
+        if (empty($point->getPosition('lat')) && empty($point->getPosition('lon'))) {
+            return null;
+        }
+        
         $this->trackPoints[] = $point;
         return $point;
     }
