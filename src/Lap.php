@@ -68,7 +68,12 @@ class Lap
     {
         $output = [];
         foreach ($this->trackPoints as $trackPoint) {
-            $output[] = ['lat' => $trackPoint->getPosition('lat'), 'lng' => $trackPoint->getPosition('lon')];
+            $lat = $trackPoint->getPosition('lat');
+            $lng = $trackPoint->getPosition('lon');
+            if (empty($lat) && empty($lng)) {
+                continue;
+            }
+            $output[] = ['lat' => $lat, 'lng' => $lng];
         }
         return $output;
     }

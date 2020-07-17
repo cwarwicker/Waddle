@@ -267,6 +267,9 @@ class Activity
             foreach ($lap->getTrackPoints() as $point) {
                 $lat = $point->getPosition('lat');
                 $long = $point->getPosition('lon');
+                if (empty($lat) && empty($long)) {
+                    continue;
+                }
                 $altitude = $point->getAltitude();
 
                 $result['highest'] = max($altitude, $result['highest']);
