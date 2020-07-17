@@ -134,10 +134,6 @@ class Lap
      */
     public function addTrackPoint(TrackPoint $point)
     {
-        if (empty($point->getPosition('lat')) && empty($point->getPosition('lon'))) {
-            return null;
-        }
-        
         $this->trackPoints[] = $point;
         return $point;
     }

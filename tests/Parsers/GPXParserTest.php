@@ -7,7 +7,7 @@ class GPXParserTest extends \PHPUnit\Framework\TestCase
     
     public $parser, $activity;
     
-    public function setUp() {
+    public function setUp(): void {
         $this->parser = new \Waddle\Parsers\GPXParser();
         $this->activity = $this->parser->parse( __DIR__ . '/../run.gpx' );
     }
