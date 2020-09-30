@@ -14,6 +14,12 @@ class Lap
     protected $totalCalories;
     /** @var TrackPoint[] */
     protected $trackPoints = [];
+    /** @var int */
+    protected $avgHeartRate = null;
+    /** @var int */
+    protected $maxHeartRate = null;
+    /** @var int */
+    protected $cadence = null;
 
     /**
      * Get the total lap time
@@ -71,6 +77,33 @@ class Lap
     }
 
     /**
+     * Get the average heart rate achieved during the lap
+     * @return int
+     */
+    public function getAvgHeartRate()
+    {
+        return $this->avgHeartRate;
+    }
+
+    /**
+     * Get the maximum heart rate achieved during the lap
+     * @return int
+     */
+    public function getMaxHeartRate()
+    {
+        return $this->maxHeartRate;
+    }
+
+    /**
+     * Get the cadence achieved during the lap
+     * @return int
+     */
+    public function getCadence()
+    {
+        return $this->cadence;
+    }
+
+    /**
      * Set the total lap time (seconds)
      * @param int $val
      * @return $this
@@ -124,4 +157,38 @@ class Lap
         $this->trackPoints[] = $point;
         return $point;
     }
+
+    /**
+     * Set the average heart rate in lap
+     * @param int $val
+     * @return $this
+     */
+    public function setAvgHeartRate($val)
+    {
+        $this->avgHeartRate = $val;
+        return $this;
+    }
+
+    /**
+     * Set the maximum heart rate in lap
+     * @param int $val
+     * @return $this
+     */
+    public function setMaxHeartRate($val)
+    {
+        $this->maxHeartRate = $val;
+        return $this;
+    }
+
+    /**
+     * Set the cadence in lap
+     * @param int $val
+     * @return $this
+     */
+    public function setCadence($val)
+    {
+        $this->cadence = $val;
+        return $this;
+    }
+
 }

@@ -82,6 +82,18 @@ class TCXParser extends Parser
         $lap->setMaxSpeed((float)$lapNode->MaximumSpeed);
         $lap->setTotalCalories((float)$lapNode->Calories);
 
+        if (isset($lapNode->AverageHeartRateBpm)) {
+            $lap->setAvgHeartRate((int)$lapNode->AverageHeartRateBpm->Value);
+        }
+
+        if (isset($lapNode->MaximumHeartRateBpm)) {
+            $lap->setMaxHeartRate((int)$lapNode->MaximumHeartRateBpm->Value);
+        }
+
+        if (isset($lapNode->Cadence)) {
+            $lap->setCadence((int)$lapNode->Cadence);
+        }
+
         // Loop through the track points
         foreach ($lapNode->Track->Trackpoint as $trackPointNode) {
             $lap->addTrackPoint($this->parseTrackPoint($trackPointNode));
@@ -107,6 +119,19 @@ class TCXParser extends Parser
         $point->setAltitude((float)$trackPointNode->AltitudeMeters);
         $point->setDistance((float)$trackPointNode->DistanceMeters);
 
+        // If heartrate is present on node, set that.
+        if (isset($trackPointNode->HeartRateBpm)) {
+            if (isset($trackPointNode->HeartRateBpm->Value)) {
+                $point->setHeartRate((int)$trackPointNode->HeartRateBpm->Value);
+            }
+        }
+
+        // If cadence is present on node, set that.
+        if (isset($trackPointNode->Cadence)) {
+            $point->setCadence((int)$trackPointNode->Cadence);
+        }
+
+        // If the speed extension is present on the node, set that.
         if ($this->nameNSActivityExtensionV2) {
             if (isset($trackPointNode->Extensions->children('x', true)->TPX->children()->Speed)) {
                 $point->setSpeed((float)$trackPointNode->Extensions->children('x', true)->TPX->children()->Speed);
@@ -114,5 +139,7 @@ class TCXParser extends Parser
         }
 
         return $point;
+
     }
+
 }

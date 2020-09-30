@@ -22,7 +22,9 @@ class TrackPoint
     /** @var float Current heart rate */
     protected $heartRate;
     /** @var float Total calories burnt so far */
-    protected $calories; //
+    protected $calories;
+    /** @var int */
+    protected $cadence;
 
     /**
      * Get the timestamp in a given format
@@ -79,7 +81,15 @@ class TrackPoint
     {
         return $this->heartRate;
     }
-
+    
+    /**
+     * Get the current cadence rate at this point
+     * @return int
+     */
+    public function getCadence()
+    {
+        return $this->cadence;
+    }
 
     /**
      * Get the number of calories burnt so far
@@ -154,6 +164,17 @@ class TrackPoint
     public function setHeartRate($val)
     {
         $this->heartRate = $val;
+        return $this;
+    }
+   
+    /**
+     * Set the cadence rate
+     * @param int $val
+     * @return $this
+     */
+    public function setCadence($val)
+    {
+        $this->cadence = $val;
         return $this;
     }
 
