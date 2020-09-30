@@ -94,9 +94,14 @@ class TCXParser extends Parser
             $lap->setCadence((int)$lapNode->Cadence);
         }
 
-        // Loop through the track points
-        foreach ($lapNode->Track->Trackpoint as $trackPointNode) {
-            $lap->addTrackPoint($this->parseTrackPoint($trackPointNode));
+        // Loop through tracks
+        foreach($lapNode->Track as $trackNode)
+        {
+            // Loop through the track points of a track
+            foreach($trackNode->Trackpoint as $trackPointNode)
+            {
+                $lap->addTrackPoint($this->parseTrackPoint($trackPointNode));
+            }
         }
 
         return $lap;
@@ -141,5 +146,4 @@ class TCXParser extends Parser
         return $point;
 
     }
-
 }
