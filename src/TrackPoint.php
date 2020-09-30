@@ -37,7 +37,7 @@ class TrackPoint
     }
 
     /**
-     * Get either the lat/long array or a specific value from it, if "lat" or "long" is passed in
+     * Get either the lat/long array or a specific value from it, if "lat" or "lon" is passed in
      * @param string $type
      * @return float|array
      */

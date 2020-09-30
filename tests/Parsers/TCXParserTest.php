@@ -6,7 +6,7 @@ class TXCParserTest extends \PHPUnit\Framework\TestCase
 {
     public $parser;
     
-    public function setUp() {
+    public function setUp(): void {
         $this->parser = new \Waddle\Parsers\TCXParser();
     }
 

@@ -256,6 +256,10 @@ class Activity
             'west' => PHP_INT_MAX,
             'highest' => PHP_INT_MIN,
             'lowest' => PHP_INT_MAX,
+            'center' => [
+                'lat' => 0,
+                'lng' => 0
+            ]
         ];
 
         // Loop through each lap and point and add it all up
@@ -263,6 +267,9 @@ class Activity
             foreach ($lap->getTrackPoints() as $point) {
                 $lat = $point->getPosition('lat');
                 $long = $point->getPosition('lon');
+                if (empty($lat) && empty($long)) {
+                    continue;
+                }
                 $altitude = $point->getAltitude();
 
                 $result['highest'] = max($altitude, $result['highest']);
@@ -274,6 +281,9 @@ class Activity
                 $result['west'] = min($long, $result['west']);
             }
         }
+        
+        $result['center']['lat'] = ($result['north'] + $result['south']) / 2;
+        $result['center']['lng'] = ($result['east'] + $result['west']) / 2;
 
         return $result;
     }

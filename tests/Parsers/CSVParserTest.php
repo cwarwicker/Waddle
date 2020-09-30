@@ -7,7 +7,7 @@ class CSVParserTest extends \PHPUnit\Framework\TestCase
     
     public $parser, $activity;
     
-    public function setUp() {
+    public function setUp(): void {
         $this->parser = new \Waddle\Parsers\CSVParser();
         $this->activity = $this->parser->parse( __DIR__ . '/../run.csv' );
     }
